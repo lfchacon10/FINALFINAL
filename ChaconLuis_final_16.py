@@ -23,6 +23,35 @@ plt.scatter(Barco3pos[0],Barco3pos[1])
 plt.scatter(Barco4pos[0],Barco4pos[1])
 plt.scatter(Barco5pos[0],Barco5pos[1])
 plt.scatter(Barco6pos[0],Barco6pos[1])
-
 plt.grid()
 plt.show()
+
+x[];
+y[];
+Vx[];
+Vy[];
+
+def Vx(x,t):
+	return x/t
+
+def Vy(y,t):
+	return y/t
+
+steps=1000
+sigma=0.1
+
+def metro(sigma, steps):
+	xi= np.random.randint(-4 , 4)
+	a=[xi] #Walk
+	for i in range (steps):
+		xn=np.random.normal(a[-1], sigma)
+		alpha= mifun(xn) / mifun(a[-1])
+		#print( "Viejo ", a[-1], "Nuevo ", xn, "Alpha ", alpha)
+		if( alpha >= 1):
+			a.append(xn)
+		else:
+			beta= np.random.uniform()
+			if ( beta < alpha):
+				a.append(xn)
+			else: a.append(a[-1])
+	return a
